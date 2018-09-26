@@ -56,7 +56,7 @@ public class UserMealsUtil {
         int i= sum;
         boolean exc=false;
         if (i>caloriesPerDay) exc=true;
-        final Boolean ex=exc;
+        final boolean ex=exc;
 
         for (UserMeal um:mealList) {
             if (um.getDateTime().toLocalTime().isAfter(startTime)&&um.getDateTime().toLocalTime().isBefore(endTime)){
