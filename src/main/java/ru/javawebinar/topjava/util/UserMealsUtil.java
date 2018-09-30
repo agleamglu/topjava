@@ -29,12 +29,16 @@ public class UserMealsUtil {
 
     // stream
     private static List<UserMealWithExceed> getFilteredWithExceeded(List<UserMeal> mealList, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
-        Map<LocalDate, Integer> hashMap = calories(mealList);
+        Map<LocalDate, Integer> currentCalories = mealList.stream()
+                .collect(Collectors.toMap(e -> e.getDateTime().toLocalDate(),
+                        UserMeal::getCalories,
+                        (dailyCalories, currentMealCalories) -> dailyCalories + currentMealCalories));
+        currentCalories.entrySet().forEach(System.out::println);
         return mealList
                 .stream()
                 .filter(s -> TimeUtil.isBetween(s.getDateTime().toLocalTime(), startTime, endTime))
                 .map(p -> new UserMealWithExceed(p.getDateTime(), p.getDescription(), p.getCalories(),
-                        (hashMap.get(p.getDateTime().toLocalDate()) > caloriesPerDay)))
+                        currentCalories.get(p.getDateTime().toLocalDate()) > caloriesPerDay))
                 .collect(Collectors.toList());
     }
 
@@ -54,12 +58,12 @@ public class UserMealsUtil {
 
     //total amount of calories per day
     private static Map<LocalDate, Integer> calories(List<UserMeal> mealList) {
-        Map<LocalDate, Integer> hashMap = new HashMap<>();
+        Map<LocalDate, Integer> dailyCaloriesMap = new HashMap<>();
         for (UserMeal userMeal : mealList) {
-            hashMap.put(userMeal.getDateTime().toLocalDate(),
-                    hashMap.getOrDefault(userMeal.getDateTime().toLocalDate(), 0) + userMeal.getCalories());
+            dailyCaloriesMap.put(userMeal.getDateTime().toLocalDate(),
+                    dailyCaloriesMap.getOrDefault(userMeal.getDateTime().toLocalDate(), 0) + userMeal.getCalories());
         }
-        return hashMap;
+        return dailyCaloriesMap;
     }
 
 
