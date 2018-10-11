@@ -24,7 +24,7 @@
     </tr>
     <tr>
         <th>Date</th>
-        <th>Meal name</th>
+        <th>Name</th>
         <th>Calories</th>
         <th></th>
     </tr>
