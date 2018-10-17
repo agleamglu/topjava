@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Meal list</title>
+    <link href="<c:url value='css/styles.css' />" rel="stylesheet" type="text/css"/>
     <style>
         .normal {
             color: green;
@@ -18,16 +19,24 @@
 </head>
 <body>
 <section>
-    <h3><a href="index.html">Home</a></h3>
-    <h2>Meals</h2>
+    <div class="container">
+        <h3><a href="index.html">Home</a></h3>
+    </div>
+    <h2>Список приема пищи</h2>
+    <select name="userId" required id="userId"
+            onchange="window.location.href = 'meals?action=changeUser&id='+this.value">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
     <a href="meals?action=create">Add Meal</a>
     <hr/>
-    <table border="1" cellpadding="8" cellspacing="0">
+    <table>
         <thead>
         <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Calories</th>
+            <th>Дата/Время</th>
+            <th>Наименование</th>
+            <th>Калории</th>
             <th></th>
             <th></th>
         </tr>

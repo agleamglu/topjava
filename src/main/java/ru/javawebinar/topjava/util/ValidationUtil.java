@@ -2,9 +2,26 @@ package ru.javawebinar.topjava.util;
 
 
 import ru.javawebinar.topjava.model.AbstractBaseEntity;
+import ru.javawebinar.topjava.model.AbstractNamedEntity;
+import ru.javawebinar.topjava.model.Role;
+import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class ValidationUtil {
+
+    public static final List<User> USERS = Arrays.asList(
+            new User("Инга Кораблева", "inga@gmail.com", "123456", Role.ROLE_USER),
+            new User("Маршак С.Я.", "marshak@mail.ru", "123456", Role.ROLE_ADMIN),
+            new User("Старков Иван Петрович", "starkov@gmail.com", "123456", Role.ROLE_ADMIN, Role.ROLE_USER)
+    );
+
+    public static List<User> getSortedList(Collection<User> users) {
+        Collections.sort(users.stream().collect(Collectors.toList()), Comparator.comparing(User::getName));
+        return users.stream().collect(Collectors.toList());
+    }
 
     public static <T> T checkNotFoundWithId(T object, int id) {
         return checkNotFound(object, "id=" + id);

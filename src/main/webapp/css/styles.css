@@ -1,0 +1,89 @@
+.container {
+
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+table, th, td {
+    border-collapse: collapse;
+    font-family: Calibri;
+}
+
+th, td {
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+}
+
+tr:nth-child(even) {
+    background-color: #d6dbdf;
+
+}
+
+th {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: white;
+    background-color: gray;
+    font-size: large;
+    text-align: left;
+}
+
+.btn1 {
+    border-radius: 6px;
+    background-color: transparent;
+    color: darkgray;
+    border: 1px solid transparent;
+
+    font-size: small;
+    cursor: pointer;
+}
+
+.btn1:hover {
+    background-color: grey;
+    color: white;
+    border: 1px solid grey;
+}
+
+.btn_delete {
+    background-image: url('images/icons8-remove-16.png');
+    min-height: 100%;
+    background-size: auto;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    color: darkgray;
+    font-size: small;
+}
+
+.btn_delete:hover {
+    border-radius: 3px;
+    border: 1px solid grey;
+}
+
+.btn_edit {
+    background-image: url('images/icons8-edit-file-16.png');
+    min-height: 100%;
+    background-size: auto;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    color: darkgray;
+    font-size: small;
+}
+
+.btn_edit:hover {
+    border-radius: 3px;
+    border: 1px solid grey;
+}
