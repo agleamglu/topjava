@@ -67,14 +67,16 @@ public class MealServlet extends HttpServlet {
             case "changeUser":
                 log.info("changeUser");
                 request.setAttribute("meals",
-                        MealsUtil.getWithExceeded(repository.getAllByUserId(Integer.parseInt(request.getParameter("id"))), MealsUtil.DEFAULT_CALORIES_PER_DAY));
+                        MealsUtil.getWithExceeded(repository.getSetByUserId(Integer.parseInt(request.getParameter("id"))), MealsUtil.DEFAULT_CALORIES_PER_DAY));
                 request.getRequestDispatcher("/meals.jsp").forward(request, response);
                 break;
             case "all":
             default:
                 log.info("getAll");
+                //request.setAttribute("meals",
+                //        MealsUtil.getWithExceeded(repository.getAll(), MealsUtil.DEFAULT_CALORIES_PER_DAY));
                 request.setAttribute("meals",
-                        MealsUtil.getWithExceeded(repository.getAll(), MealsUtil.DEFAULT_CALORIES_PER_DAY));
+                        MealsUtil.getWithExceeded(repository.getSetByUserId(ProfileRestController.USER_ID), MealsUtil.DEFAULT_CALORIES_PER_DAY));
                 request.getRequestDispatcher("/meals.jsp").forward(request, response);
                 break;
         }

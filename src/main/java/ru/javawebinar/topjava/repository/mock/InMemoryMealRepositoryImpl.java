@@ -6,9 +6,11 @@ import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.web.user.ProfileRestController;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +22,7 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
 
     {
         MealsUtil.MEALS.forEach(this::save);
-        // MealsUtil.MEALS.stream().filter(m->m.getUserId().equals(ProfileRestController.USER_ID)).forEach(this::save);
+         //MealsUtil.MEALS.stream().filter(m->m.getUserId().equals(ProfileRestController.USER_ID)).forEach(this::save);
     }
 
     @Override
@@ -49,16 +51,10 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
     }
 
     @Override
-    public Collection<Meal> getAll() {
-        log.info("getAll");
-        return repository.values();
-    }
-
-    @Override
-    public Collection<Meal> getAllByUserId(int userId) {
-        log.info("getAllByUserId", userId);
-        MealsUtil.MEALS.stream().filter(m -> m.getUserId().equals(userId)).forEach(this::save);
-        return repository.values();
+    public List<Meal> getSetByUserId(int userId) {
+        log.info("getSetByUserId", userId);
+        //MealsUtil.MEALS.stream().filter(m -> m.getUserId().equals(userId)).forEach(this::save);
+        return repository.values().stream().filter(m -> m.getUserId().equals(userId)).collect(Collectors.toList());
     }
 
 

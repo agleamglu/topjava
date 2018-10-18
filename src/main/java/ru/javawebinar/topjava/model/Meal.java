@@ -34,9 +34,7 @@ public class Meal extends AbstractBaseEntity {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
+    public Integer getUserId() {return userId; }
 
     public LocalDateTime getDateTime() {
         return dateTime;

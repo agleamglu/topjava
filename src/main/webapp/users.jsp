@@ -24,7 +24,7 @@
         </tr>
         </thead>
         <c:forEach items="${users}" var="user">
-            <%--<jsp:useBean id="user" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>--%>
+            <%--<jsp:useBean id="user" scope="page" type="ru.javawebinar.topjava.to.MealWithExceed"/>--%>
             <tr>
 
                 <td>${user.name}</td>
